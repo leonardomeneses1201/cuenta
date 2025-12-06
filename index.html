@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Autenticación</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Autenticación</h1>
+        
+        <div id="login" class="form">
+            <div id="loginMsg" class="message hidden"></div>
+            <input type="email" id="loginEmail" class="input" placeholder="Correo electrónico">
+            <div class="password-container">
+                <input type="password" id="loginPass" class="input" placeholder="Contraseña">
+                <button class="toggle" onclick="togglePassword('loginPass')">👁️</button>
+            </div>
+            <button class="btn" onclick="login()">Iniciar Sesión</button>
+            <span class="link" onclick="showForm('register')">Registrarse</span>
+            <span class="link" onclick="showForm('recovery')">¿Olvidaste tu contraseña?</span>
+        </div>
+        
+        <div id="register" class="form hidden">
+            <div id="regMsg" class="message hidden"></div>
+            <input type="text" id="regName" class="input" placeholder="Nombre completo">
+            <input type="email" id="regEmail" class="input" placeholder="Correo electrónico">
+            <input type="tel" id="regPhone" class="input" placeholder="Número de móvil">
+            <div class="password-container">
+                <input type="password" id="regPass" class="input" placeholder="Contraseña" oninput="validatePassword(this.value, 'reg')">
+                <button class="toggle" onclick="togglePassword('regPass')">👁️</button>
+            </div>
+            <div class="requirement" id="regReq">Mínimo 6 caracteres, una mayúscula, una minúscula, un número y un carácter especial</div>
+            <button class="btn" onclick="register()">Crear Cuenta</button>
+            <span class="link" onclick="showForm('login')">Volver a inicio de sesión</span>
+        </div>
+        
+        <div id="recovery" class="form hidden">
+            <div id="recMsg" class="message hidden"></div>
+            <input type="email" id="recEmail" class="input" placeholder="Correo electrónico">
+            <div class="password-container">
+                <input type="password" id="recPass" class="input" placeholder="Nueva contraseña" oninput="validatePassword(this.value, 'rec')">
+                <button class="toggle" onclick="togglePassword('recPass')">👁️</button>
+            </div>
+            <div class="requirement" id="recReq">Mínimo 6 caracteres, una mayúscula, una minúscula, un número y un carácter especial</div>
+            <button class="btn" onclick="recover()">Actualizar Contraseña</button>
+            <span class="link" onclick="showForm('login')">Volver a inicio de sesión</span>
+        </div>
+        
+        <div id="welcome" class="form hidden">
+            <div id="welcomeMsg" class="message success"></div>
+            <button class="btn" onclick="logout()">Cerrar Sesión</button>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
